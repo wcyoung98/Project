@@ -17,8 +17,8 @@
 	</header>
 	<nav id="nav">
 		<ul>
-			<li><a href="#HOME">HOME</a></li>
-			<li><a href="#LOGIN">LOGIN</a></li>
+			<li onclick="textHidden(1)"><a href="#HOME">HOME</a></li>
+			<li onclick="textHidden(2)"><a href="#LOGIN">LOGIN</a></li>
 		</ul>
 	</nav>
 	<section id="HOME">
@@ -49,15 +49,36 @@
 	</section>
 	<section id="LOGIN">
 		<article>
-			<form action="loginaction.jsp">
+			<form name="myForm">
 				<input type="text" name="id" placeholder="아이디" />
 				<input type="password" name="pw" placeholder="비밀번호" />
-				<input type="submit" value="로그인" id="button"/>
+				<input type="button" value="로그인" id="button" onclick="mySubmit(1)"/>
+				<input type="button" value="회원가입" id="button" onclick="mySubmit(2)"/>
 			</form>
 		</article>
 	</section>
 	<footer id="footer">
 		<h2>footer</h2>
 	</footer>
+	<script>
+		function mySubmit(index){
+			if(index == 1){
+				document.myForm.action="loginaction.jsp";
+			}
+			else if(index == 2){
+				document.myForm.action="memberAdd.jsp";
+			}
+			document.myForm.submit();
+		}
+		function textHidden(index){
+			if(1 == index){
+				document.getElementById("HOME").style.display="block";
+				document.getElementById("LOGIN").style.display="none";
+			} else if(2 == index){
+				document.getElementById("HOME").style.display="none";
+				document.getElementById("LOGIN").style.display="block";
+			}
+		}
+	</script>
 </body>
 </html>

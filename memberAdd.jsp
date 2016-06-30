@@ -16,28 +16,18 @@
 	
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project", "root", "apmsetup");
-		String query = "select COUNT(*) as cnt from member where id='"+loginID+"' and pw='"+loginPW+"'";
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "apmsetup");
+		String query = "insert into member values(?,?)";
 		PreparedStatement pstmt = con.prepareStatement(query);
-		ResultSet rs = pstmt.executeQuery();
-		while(rs.next()){
-			if(1 == rs.getInt("cnt")){
-				
-				session.setAttribute("id", loginID);
-%>
-				<jsp:forward page="ok.jsp" />
-<%
-			}else {
-%>
-				<jsp:forward page="index.jsp" />
-<%
-			}
-		}
+		pstmt.setString(1, loginID);
+		pstmt.setString(2, loginPW);
+		pstmt.executeUpdate();
 		pstmt.close();
 		con.close();
-	}catch (Exception e){
+	}catch(Exception e){
 		e.printStackTrace();
 	}
 %>
+<script>location.href="index.jsp"</script>
 </body>
 </html>
