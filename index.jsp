@@ -17,7 +17,7 @@
 	</header>
 	<nav id="nav">
 		<ul>
-			<li onclick="textHidden(1)"><a href="#HOME">HOME</a></li>
+			<li onclick="textHidden(1)"><a href="#">HOME</a></li>
 			<li onclick="textHidden(2)"><a href="#LOGIN">LOGIN</a></li>
 		</ul>
 	</nav>
@@ -60,25 +60,6 @@
 	<footer id="footer">
 		<h2>footer</h2>
 	</footer>
-	<script>
-		function mySubmit(index){
-			if(index == 1){
-				document.myForm.action="loginaction.jsp";
-			}
-			else if(index == 2){
-				document.myForm.action="memberAdd.jsp";
-			}
-			document.myForm.submit();
-		}
-		function textHidden(index){
-			if(1 == index){
-				document.getElementById("HOME").style.display="block";
-				document.getElementById("LOGIN").style.display="none";
-			} else if(2 == index){
-				document.getElementById("HOME").style.display="none";
-				document.getElementById("LOGIN").style.display="block";
-			}
-		}
-	</script>
+	<script src="JS/index.js"></script>
 </body>
 </html>
