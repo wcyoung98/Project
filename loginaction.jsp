@@ -11,7 +11,11 @@
 <%
 	String loginID = request.getParameter("id");
 	String loginPW = request.getParameter("pw");
-	
+	if(loginID == null || loginID == "" || loginPW == null || loginPW == ""){
+%>
+	<jsp:forward page="index.jsp" />
+<%
+	}
 	Connection con = null;
 	
 	try {

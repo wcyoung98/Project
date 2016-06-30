@@ -9,24 +9,14 @@
 </head>
 <body>
 <%
-	String loginID = request.getParameter("id");
-	String loginPW = request.getParameter("pw");
-	if(loginID == null || loginID == "" || loginPW == null || loginPW == ""){
-%>
-	<jsp:forward page="index.jsp" />
-<%
-	}
-	
+	String english = request.getParameter("str");
 	Connection con = null;
 	
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "apmsetup");
-		String query = "insert into member values(?,?,?)";
+		String query = "update wordbook set know = 1 where english = '"+english+"'";
 		PreparedStatement pstmt = con.prepareStatement(query);
-		pstmt.setString(1, loginID);
-		pstmt.setString(2, loginPW);
-		pstmt.setInt(3, 0);
 		pstmt.executeUpdate();
 		pstmt.close();
 		con.close();
@@ -34,6 +24,6 @@
 		e.printStackTrace();
 	}
 %>
-<script>location.href="index.jsp"</script>
+<script>location.href="ok.jsp";</script>
 </body>
 </html>
