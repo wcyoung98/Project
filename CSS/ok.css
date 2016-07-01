@@ -2,6 +2,7 @@
 html {
 	width: 100%;
 	height: 100%;
+	overflow-x: hidden;
 }
 body {
 	width: 100%;
@@ -33,4 +34,17 @@ th {
 }
 #link {
 	text-decoration: underline;
+}
+#form {
+	margin: 10px auto;
+}
+#input {
+	text-align: center;
+	width: 60%;
+	padding: 5px;
+}
+#inputButton {
+	vertical-align: bottom;
+	padding: 5px;
+	margin: 5px;
 }

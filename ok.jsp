@@ -30,7 +30,7 @@
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "apmsetup");
-		String query = "select english, korean, know from wordbook order by know desc";
+		String query = "select english, korean, know from wordbook order by know asc, english asc";
 		PreparedStatement pstmt = con.prepareStatement(query);
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()){
@@ -53,12 +53,33 @@
 <% 
 		}
 		pstmt.close();
-		con.close();
 	}catch(Exception e){
 	e.printStackTrace();
 	}
 %>
 </table>
+<%
+	try {
+		String memberQuery = "select enable from member where id='" + id + "'";
+		PreparedStatement pstmt = con.prepareStatement(memberQuery);
+		ResultSet rs = pstmt.executeQuery();
+		if(rs.next()){
+			if(1 == rs.getInt("enable")) {
+%>				
+				<center><form action="insertaction.jsp" id="form">
+					<input type="text" id="input" name="english" placeholder="영어단어" />
+					<input type="text" id="input" name="korean" placeholder="의미" /><br />
+					<input type="submit" id="inputButton" value="입력" />
+				</form></center>
+<%
+			}
+		}
+		pstmt.close();
+		con.close();
+	} catch(Exception e){
+		e.printStackTrace();
+	}
+%>
 <p id="logout"><a href="logoutaction.jsp">로그아웃</a></p>
 <script>
 	function know(str){

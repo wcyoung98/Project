@@ -65,8 +65,8 @@ body {
 	padding: 15px;
 	font-size: 1.3em;
 	font-weight: bold;
-	box-sizing: border-box;
 	border-radius: 2px;
+	box-sizing: border-box;
 }
 #LOGIN #button {
 	background-color: #EEE;
